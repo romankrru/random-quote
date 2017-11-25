@@ -50,7 +50,7 @@ class App extends Component {
         <GetNewQuoteButton onClick={this.getQuote} isLoading={this.state.isLoading} />
         <Quote author={author} text={text} />
 
-        <a className={styles['github-link']} href="#">
+        <a className={styles['github-link']} href="https://github.com/romankrru/random-quote">
           <img src={githubLogo}/>
         </a>
 

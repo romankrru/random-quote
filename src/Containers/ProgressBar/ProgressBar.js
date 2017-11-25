@@ -16,6 +16,7 @@ class ProgressBar extends React.Component {
 
   startAnimation = () => {
     this.setState({
+      translateValue: -100,
       animationInProgress: true
     });
 

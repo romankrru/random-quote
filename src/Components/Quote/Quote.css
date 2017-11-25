@@ -1,0 +1,67 @@
+.Quote,
+.author,
+.text {
+  margin: 0;
+  padding: 0;
+}
+
+.Quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+
+  overflow: hidden;
+  width: 1200px;
+  
+  text-align: center;
+  font-size: 70px;
+  color: #fff;
+}
+
+@media (max-width: 1240px) {
+  .Quote {
+    width: 940px;
+  }
+}
+
+@media (max-width: 960px) {
+  .Quote {
+    width: 720px;
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 740px) {
+  .Quote {
+    position: static;
+    /* top: 0; */
+    transform: none;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20vh;
+  }
+}
+
+
+.author {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #243131;
+}
+
+.author span:first-child {
+  font-weight: 300;
+}
+
+.author span:last-child {
+  font-weight: 700;
+}
+
+.text {
+  color: #53543b;
+  font-size: .33em;
+  line-height: 1.5;
+  text-shadow: 0px 0px 1px #243131;
+}
+

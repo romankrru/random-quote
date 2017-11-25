@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+
+  font-family: sans-serif;
+  font-family: 'Quicksand';
+
+  background-image: url('./images/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+:global .quote-animation-enter {
+  opacity: 0.01;
+  transform: translate(-50%, -40%) !important;
+}
+
+:global .quote-animation-enter.quote-animation-enter-active {
+  opacity: 1;
+  transform: translate(-50%, -80%) !important;
+  transition: all .5s ease;
+}
+
+:global .quote-animation-leave {
+  opacity: 1;
+  transform: translate(-50%, -80%) !important;
+}
+
+:global .quote-animation-leave.quote-animation-leave-active {
+  opacity: 0.01;
+  transform: translate(-50%, 0%) !important;
+  transition: all .3s ease;
+}
+
+@media (max-width: 740px) {
+  :global .quote-animation-enter {
+    overflow: hidden;
+    opacity: 0.01;
+    transform: translate(0, -40%) !important;
+  }
+
+  :global .quote-animation-enter.quote-animation-enter-active {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+    transition: all .5s ease;
+  }
+
+  :global .quote-animation-leave {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+  }
+
+  :global .quote-animation-leave.quote-animation-leave-active {
+    opacity: 0.01;
+    transform: translate(0, 40%) !important;
+    transition: all .3s ease;
+  }
+}

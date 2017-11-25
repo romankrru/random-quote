@@ -1,0 +1,52 @@
+.GetNewQuoteButton {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  
+  cursor: pointer;
+}
+
+.GetNewQuoteButton img {
+  display: block;
+  width: 60px;
+  margin: 0;
+  padding: 0;
+
+  transition: opacity .3s ease;
+  animation: shake 1s ease-in-out 1.5s infinite alternate;
+}
+
+.GetNewQuoteButton img:hover {
+  opacity: .6;
+  animation: none;
+}
+
+.GetNewQuoteButton--loading img {
+  animation: rotation .2s infinite linear !important;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  20% {
+    transform-origin:center center;
+    transform: rotate(-10deg);
+  }
+
+  40% {
+    transform-origin:center center;
+    transform: rotate(0deg);
+  }
+}

@@ -4,10 +4,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './Quote.css';
 
 class Quote extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   shouldComponentUpdate(nextProps) {
     if (this.props.text !== nextProps.text) {
       return true;

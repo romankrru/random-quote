@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ProgressBar from './Containers/ProgressBar/ProgressBar';
+import ProgressBar from './Components/ProgressBar/ProgressBar';
 import Quote from './Components/Quote/Quote';
 import GetNewQuoteButton from './Components/GetNewQuoteButton/GetNewQuoteButton';
 

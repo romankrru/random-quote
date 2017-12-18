@@ -22,7 +22,7 @@ const GetNewQuoteButton = (props) => {
         ${props.isLoading ? styles['GetNewQuoteButton--loading'] : ''}
       `}
     >
-      <img src={reloadIcon}/>
+      <img alt="Reload" src={reloadIcon}/>
     </Button>
   );
 };

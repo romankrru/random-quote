@@ -51,7 +51,7 @@ class App extends Component {
         <Quote author={author} text={text} />
 
         <a className={styles['github-link']} href="https://github.com/romankrru/random-quote">
-          <img src={githubLogo}/>
+          <img alt="Github" src={githubLogo}/>
         </a>
 
       </div>

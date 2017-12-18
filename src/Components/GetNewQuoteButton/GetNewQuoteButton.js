@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../Button/Button';
 
@@ -18,13 +19,19 @@ const GetNewQuoteButton = (props) => {
     <Button
       onClick={clickHandler}
       className={`
-        ${styles.GetNewQuoteButton }
+        ${styles.GetNewQuoteButton}
         ${props.isLoading ? styles['GetNewQuoteButton--loading'] : ''}
       `}
     >
-      <img alt="Reload" src={reloadIcon}/>
+      <img alt="Reload" src={reloadIcon} />
     </Button>
   );
 };
 
+GetNewQuoteButton.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
 export default GetNewQuoteButton;
+

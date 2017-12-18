@@ -1,60 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './ProgressBar.css';
 
 class ProgressBar extends React.Component {
+  static propTypes = {
+    startProgress: PropTypes.bool.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
     this.state = {
       translateValue: -100,
-      animationInProgress: false
+      animationInProgress: false,
     };
 
     this.svgWidth = document.body.clientWidth;
   }
 
-  startAnimation = () => {
-    this.setState({
-      translateValue: -100,
-      animationInProgress: true
-    });
-
-    this.startAnimationTimerId = setInterval(() => {
-      if (!this._isMounted) {
-        return;
-      }
-
-      this.setState((prevState) => {
-        return {
-          translateValue: prevState.translateValue + Math.abs(prevState.translateValue * .1)
-        }
-      });
-    }, 500);
-  }
-
-  stopAnimation = () => {
-    clearInterval(this.startAnimationTimerId);
-
-    this.setState((prevState) => {
-      return {
-        translateValue: 0
-      }
-    });
-
-    this.stopAnimationTimerId = setTimeout(() => {
-      if (this._isMounted === false) {
-        return;
-      }
-
-      this.setState({
-        animationInProgress: false
-      })
-    }, 500);
-  }
-
   componentDidMount() {
-    this._isMounted = true;
+    this.isComponentMounted = true;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -78,28 +44,64 @@ class ProgressBar extends React.Component {
   componentWillUnmount() {
     clearInterval(this.startAnimationTimerId);
     clearTimeout(this.stopAnimationTimerId);
-    this._isMounted = false;
+    this.isComponentMounted = false;
+  }
+
+  startAnimation = () => {
+    this.setState({
+      translateValue: -100,
+      animationInProgress: true,
+    });
+
+    this.startAnimationTimerId = setInterval(() => {
+      if (!this.isComponentMounted) {
+        return;
+      }
+
+      this.setState(prevState => ({
+        translateValue: prevState.translateValue + Math.abs(prevState.translateValue * 0.1),
+      }));
+    }, 500);
+  }
+
+  stopAnimation = () => {
+    clearInterval(this.startAnimationTimerId);
+
+    this.setState(() => ({
+      translateValue: 0,
+    }));
+
+    this.stopAnimationTimerId = setTimeout(() => {
+      if (this.isComponentMounted === false) {
+        return;
+      }
+
+      this.setState({
+        animationInProgress: false,
+      });
+    }, 500);
   }
 
   render() {
     return (
-      <svg height='10' width={this.svgWidth} className={styles.progressbar}>
+      <svg height="10" width={this.svgWidth} className={styles.progressbar}>
         {
           this.state.animationInProgress &&
           <line
-            className={styles['progressbar__line']}
-            stroke='#b17200'
-            strokeWidth='2'
-            x1='0'
-            y1='1'
-            x2='100%'
-            y2='1'
+            className={styles.progressbar__line}
+            stroke="#b17200"
+            strokeWidth="2"
+            x1="0"
+            y1="1"
+            x2="100%"
+            y2="1"
             style={{ transform: `translateX(${this.state.translateValue}%)` }}
           />
         }
       </svg>
     );
   }
-};
+}
+
 
 export default ProgressBar;

@@ -12,19 +12,23 @@ class App extends Component {
   state = {
     quote: {
       author: '',
-      text: ''
+      text: '',
     },
-    isLoading: false
+    isLoading: false,
+  }
+
+  componentDidMount() {
+    this.getQuote();
   }
 
   getQuote = () => {
-    this.setState({isLoading: true});
+    this.setState({ isLoading: true });
 
     axios.get('https://talaikis.com/api/quotes/random/ ')
       .then(({ data }) => {
         const quote = {
           text: data.quote,
-          author: data.author
+          author: data.author,
         };
 
         this.setState({ quote, isLoading: false });
@@ -32,10 +36,6 @@ class App extends Component {
       .catch((err) => {
         console.log(err);
       });
-  }
-
-  componentDidMount() {
-    this.getQuote();
   }
 
   render() {
@@ -51,7 +51,7 @@ class App extends Component {
         <Quote author={author} text={text} />
 
         <a className={styles['github-link']} href="https://github.com/romankrru/random-quote">
-          <img alt="Github" src={githubLogo}/>
+          <img alt="Github" src={githubLogo} />
         </a>
 
       </div>

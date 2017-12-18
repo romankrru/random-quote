@@ -1,9 +1,20 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import PropTypes from 'prop-types';
 
 import styles from './Quote.css';
 
 class Quote extends React.Component {
+  static defaultProps = {
+    text: '',
+    author: '',
+  }
+
+  static propTypes = {
+    text: PropTypes.string,
+    author: PropTypes.string,
+  }
+
   shouldComponentUpdate(nextProps) {
     if (this.props.text !== nextProps.text) {
       return true;
@@ -33,7 +44,10 @@ class Quote extends React.Component {
         transitionLeaveTimeout={300}
       >
         <blockquote className={styles.Quote} key={Math.random()}>
-          <p className={styles.author}><span>{authorFirstName}</span> <span>{authorLastName}</span></p>
+          <p className={styles.author}>
+            <span>{authorFirstName}</span>
+            <span>{authorLastName}</span>
+          </p>
           <p className={styles.text}>{text}</p>
         </blockquote>
       </ReactCSSTransitionGroup>

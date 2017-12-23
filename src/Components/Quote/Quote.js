@@ -45,7 +45,7 @@ class Quote extends React.Component {
       >
         <blockquote className={styles.Quote} key={Math.random()}>
           <p className={styles.author}>
-            <span>{authorFirstName}</span>
+            <span>{authorFirstName} </span>
             <span>{authorLastName}</span>
           </p>
           <p className={styles.text}>{text}</p>
